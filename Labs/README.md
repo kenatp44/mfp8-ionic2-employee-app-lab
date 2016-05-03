@@ -17,6 +17,8 @@ The tools to install include:
 - Install MobileFirst 8.0 beta Development Kit
 - Install Android Studio
 - Install XCode (Mac only)
+- Install Google Chrome
+- Install your favorite IDE.
 
 ### Install Java
 You will need one of the following installed:
@@ -183,7 +185,15 @@ These components can be installed either seperately via online repositories whic
 
 > **Note:** That you installed the CLI (Command-Line-Interface) from npm in the previous step and so you will not need to re-install the MFP CLI.
 
+### Install Google Chrome
+### Install your favorite IDE
 
+You will need an IDE to complete the labs and there is no right solution, however the labs below will be showing using WebStorm. IDEs that you can use are:
+
+- [WebStorm](https://www.jetbrains.com/webstorm/) (Commercial): https://www.jetbrains.com/webstorm/
+- [Atom](https://atom.io) (Open Source)
+- [Visual Studio Code](https://code.visualstudio.com) (Open Source)
+- [Brackets](http://brackets.io) (Open Source)
 
 ## Steps
 These labs are loosely based on a subset of the Hybrid Messenger lab found on the MobileFirst Developer Site. The Bybrid Messenger Lab can be found on the [MobileFirst Platform Foundation 8.0 Labs Site](https://mobilefirstplatform.ibmcloud.com/labs/developers/8.0/hybridmessenger/)
@@ -237,9 +247,414 @@ The `--ts` tells Ionic that we will be using TypeScript instead of JavaScript.
 
 For more information on the Ionic start command, please visit [Starting an Ionic App](http://ionicframework.com/docs/v2/cli/start/)
 
+**Output**
+
+When complete, your outout should look similar to the following:
+
+```
+Creating Ionic app in folder /Users/KenAtIBM/Projects/MFPF8IONIC2LAB/EmpApp/employeeDirectory based on sidemenu project
+Downloading: https://github.com/driftyco/ionic2-app-base/archive/typescript.zip
+[=============================]  100%  0.0s
+Downloading: https://github.com/driftyco/ionic2-starter-sidemenu/archive/typescript.zip
+Installing npm packages...
+
+Adding initial native plugins
+[=============================]  100%  0.0s
+
+Adding in iOS application by default
+
+add to body class: platform-ios
+Saving your Ionic app state of platforms and plugins
+Saved platform
+Saved plugins
+Saved package.json
+
+♬ ♫ ♬ ♫  Your Ionic app is ready to go! ♬ ♫ ♬ ♫
+
+Make sure to cd into your new app directory:
+  cd employeeDirectory
+
+To run your app in the browser (great for initial development):
+  ionic serve
+
+To run on iOS:
+  ionic run ios
+
+To run on Android:
+  ionic run android
+
+To test your app on a device easily, try Ionic View:
+  http://view.ionic.io
+
+New! Add push notifications, update your app remotely, and package iOS and Android apps with the Ionic Platform!
+https://apps.ionic.io/signup
+
+New to Ionic? Get started here: http://ionicframework.com/docs/v2/getting-started
+
+kenatibm:EmpApp KenAtIBM$ 
+```
+
+###Step 4: Change Directory to Ionic Application
+
+**On Mac or Linux** open a terminal and type:
+
+`cd ~/EmpApp/employeeDirectory`
+
+![Change Directory](images/change_directory.png)
+
+**On Windows** open a command prompt and type:
+
+`cd /EmpApp/employeeDirectory`
+
+###Step 5: Set Google Chrome as Default Browser for Ionic
+Google Chrome has advanced debugging capaiblities that make it really nice for developers. To set Google Chrome as the default browser for this project, edit the `ionic.config.json` file and add a default browser option.
+
+```json
+{
+  "name": "employeeDirectory",
+  "app_id": "",
+  "v2": true,
+  "typescript": true,
+  "defaultBrowser": "Google Chrome"
+}
+```
+
+### Step 6: Test Ionic Application
+
+> **Assumption:** It is assumed that you are in the working directory for the Ionic application `EmpApp/employeeDirectory`
+
+From your terminal or command prompt type:
+
+`ionic serve`
+	
+Your terminal output should look similar to the following:
+	
+```
+kenatibm:employeeDirectory KenAtIBM$ ionic serve
+WARN: ionic.config.js has been deprecated, you can remove it.
+
+Running 'serve:before' gulp task before serve
+[14:07:45] Starting 'clean'...
+[14:07:45] Finished 'clean' after 16 ms
+[14:07:45] Starting 'watch'...
+[14:07:45] Starting 'sass'...
+[14:07:45] Starting 'html'...
+[14:07:45] Starting 'fonts'...
+[14:07:45] Starting 'scripts'...
+[14:07:45] Finished 'scripts' after 32 ms
+[14:07:45] Finished 'html' after 35 ms
+[14:07:45] Finished 'fonts' after 48 ms
+[14:07:46] Finished 'sass' after 700 ms
+7.6 MB bytes written (7.93 seconds)
+[14:07:56] Finished 'watch' after 11 s
+[14:07:56] Starting 'serve:before'...
+[14:07:56] Finished 'serve:before' after 6.09 μs
+
+WARN: ionic.config.js has been deprecated, you can remove it.
+Running live reload server: http://localhost:35729
+Watching: www/**/*, !www/lib/**/*
+√ Running dev server:  http://localhost:8100
+Ionic server commands, enter:
+  restart or r to restart the client app from the root
+  goto or g and a url to have the app navigate to the given url
+  consolelogs or c to enable/disable console log output
+  serverlogs or s to enable/disable server log output
+  quit or q to shutdown the server and exit
+
+ionic $
+```
+And Google Chrome should have opened with the following page.
+ 	
+![Ionic Serve - Getting Started](images/ionic_getting_started_page.png)
+
+> **Note:** To exit the server, type `q` at the `ionic $` prompt in your terminal
 
 
-- 
+### Step 7: Start Chrome Developer Tools
+
+As mentioned previously Chrome provides the Hybrid Developer some exceptional tools. To enable developer tools in Chrome, select the **View** menu then select the **Developer** menu and finally select **Developer Tools**. This will enable the developer tools view.
+
+![Developer Tools](images/start_chrome_developer_tools.png)
+
+### Step 8: Enable the Mobile View
+With the Developer Tools view enabled, select the **Toggle device mode** button from the Developer Tools button bar. This will display the application as a mobile application. On the mobile tool bar you can change the device, the zoom ratio and more.  This example shows an iPhone 6 zoomed to 71%
+
+![Mobile Developer](images/chrome_mobile_tools_console.png)
+
+
+### Step 9A: Add Android Platform to Project
+
+> **Assumption:** It is assumed that you are in the working directory for the Ionic application `EmpApp/employeeDirectory`
+
+From the terminal or command prompt type
+
+`cordova platform add android`
+
+Your output should look similar to the following:
+
+```
+Adding android project...
+Creating Cordova project for the Android platform:
+	Path: platforms/android
+	Package: com.ionicframework.employeedirectory380297
+	Name: employeeDirectory
+	Activity: MainActivity
+	Android target: android-23
+Android project created with cordova-android@5.1.1
+Installing "cordova-plugin-console" for android
+Installing "cordova-plugin-device" for android
+Installing "cordova-plugin-splashscreen" for android
+Installing "cordova-plugin-statusbar" for android
+Installing "cordova-plugin-whitelist" for android
+
+               This plugin is only applicable for versions of cordova-android greater than 4.0. If you have a previous platform version, you do *not* need this plugin since the whitelist will be built in.
+          
+Installing "ionic-plugin-keyboard" for android
+Running command: /Users/KenAtIBM/Projects/MFPF8IONIC2LAB/EmpApp/employeeDirectory/hooks/after_prepare/010_add_platform_class.js /Users/KenAtIBM/Projects/MFPF8IONIC2LAB/EmpApp/employeeDirectory
+add to body class: platform-android
+```
+The key is that all the android cordova plugins are added.
+
+### Step 9B: Add iOS Platform to Project
+
+> **Assumption:** It is assumed that you are in the working directory for the Ionic application `EmpApp/employeeDirectory`.
+> Also it is assumed that you are running on a Macintosh and that you have installed the latest version of Xcode.
+
+From the terminal or command prompt type
+
+`cordova platform add ios`
+
+> **Note:** If you are running on a Macintosh, the ios platform may have already been added for you when you created the project. However this will throw an error when in a later section when you prepare the application. 
+
+```
+Error: Failed to prepare plug-in for ios : 
+An unexpected error occurred. Contact IBM support.
+```
+
+> To fix this, remove the ios platform and re-add it. To remove the ios platform type `cordova platform remove ios`. Then re-add the ios platform using the command above.
+
+
+### Step 10: Confirm Platforms have been added
+
+> **Assumption:** It is assumed that you are in the working directory for the Ionic application `EmpApp/employeeDirectory`.
+
+From the terminal or command prompt type
+
+`cordova platform list`
+
+Your output should be similar to the following:
+
+```
+Installed platforms:
+  android 5.1.1
+  ios 4.1.1
+Available platforms: 
+  amazon-fireos ~3.6.3 (deprecated)
+  blackberry10 ~3.8.0
+  browser ~4.1.0
+  firefoxos ~3.6.3
+  osx ~4.0.1
+  webos ~3.7.0
+```
+
+Notice the **Installed platforms** and the **Available Platforms** The Installed platforms show which device platforms have been added to the project and the Available Platforms show the remaining platforms that can be added if neeeded.
+
+### Step 11: Add MFP Cordova Plugin
+> **Assumption:** It is assumed that you are in the working directory for the Ionic application `EmpApp/employeeDirectory`.
+
+There are four MFP Cordova Plugins for MFPF 8. They are:
+
+- cordova-plugin-mfp
+- cordova-plugin-mfp-push
+- cordova-plugin-mfp-jsonstore
+- cordova-plugin-mfp-fips
+
+The only one needed for this lab is cordova-plugin-mfp. To add the plugin type the following from you terminal or command prompt:
+
+`cordova plugin add cordova-plugin-mfp`
+
+Your output should be similar to the following:
+
+```
+Fetching plugin "cordova-plugin-mfp" via npm
+Installing "cordova-plugin-mfp" for android
+Dependent plugin "cordova-plugin-device" already installed on android.
+Fetching plugin "cordova-plugin-dialogs" via npm
+Installing "cordova-plugin-dialogs" for android
+Fetching plugin "cordova-plugin-globalization" via npm
+Installing "cordova-plugin-globalization" for android
+Fetching plugin "cordova-plugin-okhttp" via npm
+Installing "cordova-plugin-okhttp" for android
+MainActivity.java was backed up as MainActivity.original. A MobileFirst Platform Foundation version of MainActivity.java was added. If you have made changes in the original MainActivity.java, you need to merge them with the current MainActivity.java in the /Users/KenAtIBM/Projects/MFPF8IONIC2LAB/EmpApp/employeeDirectory/platforms/android/src/com/ionicframework/employeedirectory380297 directory.
+Installing "cordova-plugin-mfp" for ios
+Dependent plugin "cordova-plugin-device" already installed on ios.
+Installing "cordova-plugin-dialogs" for ios
+Installing "cordova-plugin-globalization" for ios
+cp: no such file or directory: /Users/KenAtIBM/Projects/MFPF8IONIC2LAB/EmpApp/employeeDirectory/platforms/ios/employeeDirectory/main.m
+
+If you made changes to your main.m file, manually merge main.m.bak with the main.m file that is provided with IBM MobileFirst Platform Foundation.
+```
+
+To verify that the plugin was added, type the following in your terminal or command prompt:
+
+`cordova plugin list`
+
+Your output should look similar to the following:
+
+```
+cordova-plugin-console 1.0.3 "Console"
+cordova-plugin-device 1.1.2 "Device"
+cordova-plugin-dialogs 1.2.1 "Notification"
+cordova-plugin-globalization 1.0.3 "Globalization"
+cordova-plugin-mfp 8.0.2016032800 "IBM MobileFirst Platform Foundation"
+cordova-plugin-okhttp 2.0.0 "OkHttp"
+cordova-plugin-splashscreen 3.2.2 "Splashscreen"
+cordova-plugin-statusbar 2.1.3 "StatusBar"
+cordova-plugin-whitelist 1.2.2 "Whitelist"
+ionic-plugin-keyboard 2.1.0 "Keyboard"
+```
+
+**Notice** the `cordova-plugin-mfp 8.0.2016032800 "IBM MobileFirst Platform Foundation"` entry.
+
+### Step 12: Start the Local Server
+This step assumes that you have installed the MobileFirst Development kit from the [MobileFirst Developer Download Page](https://mobilefirstplatform.ibmcloud.com/downloads/). **Note** this was a prerequisite.  The standard install will place the server in the User Home Directory in a directory called MobileFirst-8.0.0.0.
+
+1. Open a new terminal or command prompt
+1. Navigate to the MobileFirst-8.0.0.0 directory
+
+	`cd ~/MobileFirst-8.0.0.0`
+
+**For Mac or Linux**
+
+1. Run the server using nohup command, in your terminal type
+
+	`nohup ./run.sh &`
+	
+1. Command+C to exit
+	
+1. Tail the output by typing the following in your terminal.
+
+	`tail -f nohup.out`
+
+**For Windows**
+
+1. Run the server in your command prompt by typing
+
+	`run.bat`
+
+
+### Step 13: Run MFP Console
+To verify that the server is running, open a new session in your browser and type `http://localhost:9080/mfpconsole`. This should start the MFP Console and display the login page.
+
+![MFP Console Login Page](images/mfp_console_login_page.png)
+
+To login, the user is `admin` and the password is `admin`. Press the **Login** button, if successful you will see the MobileFirst Operations Console Dashboard page.
+
+![MFP Console Login Page](images/mfp_console_dashboard.png)
+
+### Step 14: Register the Application
+
+Right now in the console there are no applications listed. The next step is to register the Ionic application. To do that return to your terminal or command prompt. Ensure that you are in the ~/EmpApp/employeeDirectory directory. Type the following:
+
+`mfpdev app register`
+
+Since there is only one server currently registered with the application, the application will be pushed to the local MFPF server or localhost:9080. Your output should look similar to the following:
+
+```
+Verifying server configuration...
+Registering to server:'http://9.16.77.183:9080' runtime:'mfp'
+Updated config.xml file located at: /Users/KenAtIBM/Projects/MFPF8IONIC2LAB/EmpApp/employeeDirectory/config.xml
+Run 'cordova prepare' to propagate changes.
+Registered app for platform: android
+Registered app for platform: ios
+```
+
+Go back to your dashboard and refresh the page.  Notice that now there is an application listed in the **Applications** section called employeeDirectory.
+
+![MFP Console App Registered](images/mfp_console_app_registered.png)
+
+### Step 15: Prepare Application
+> **Assumption:** It is assumed that you are in the working directory for the Ionic application `EmpApp/employeeDirectory`.
+
+To build the application you issue a cordova prepare command. From the terminal or command prompt type
+
+`cordova prepare`
+
+Your output should look similar to the following
+
+```
+Running command: /Users/KenAtIBM/Projects/MFPF8IONIC2LAB/EmpApp/employeeDirectory/hooks/after_prepare/010_add_platform_class.js /Users/KenAtIBM/Projects/MFPF8IONIC2LAB/EmpApp/employeeDirectory
+add to body class: platform-android
+add to body class: platform-ios
+```
+
+### Step 16: Get App Registration Information
+> **Assumption:** It is assumed that you are in the working directory for the Ionic application `EmpApp/employeeDirectory`.
+
+This step will get all the configuration information created during the application registration performed in step 14. From the terminal or command prompt type
+
+`mfpdev app pull`
+
+Your output should look similar to the following:
+
+```
+Verifying server configuration...
+Pulling Application Settings from server:'http://9.16.77.183:9080' runtime:'mfp'
+Pulled Application Settings for platform: android on version 0.0.1
+Pulled Application Settings for platform: ios on version 0.0.1
+```
+
+### Step 17: Push the Application to the Server with Registration Information
+
+> **Assumption:** It is assumed that you are in the working directory for the Ionic application `EmpApp/employeeDirectory`.
+
+This step will push the application with all the configuration information created during the application registration in step 14. From the terminal or command prompt type
+
+`mfpdev app push`
+
+Your output should look similar to the following:
+
+```
+Verifying server configuration...
+Pushing Application Settings to server:'http://9.16.77.183:9080' runtime:'mfp'
+Pushed application Settings for platform: android on version 0.0.1
+Pushed application Settings for platform: ios on version 0.0.1
+```
+
+### Step 18: Start a Gulp Watch command
+To ensure that the changes being made are automatically buildt, you will need to start a Gulp Watch command. To do this, start a new terminal or command prompt and ensure that you are in your `~/EmpApp/employeeDirectory` directory. Type the following command:
+
+`gulp watch`
+
+Your output should look similar to the following:
+
+```
+[15:40:09] Using gulpfile ~/Projects/MFPF8IONIC2LAB/EmpApp/employeeDirectory/gulpfile.js
+[15:40:09] Starting 'clean'...
+[15:40:09] Finished 'clean' after 17 ms
+[15:40:09] Starting 'watch'...
+[15:40:09] Starting 'sass'...
+[15:40:09] Starting 'html'...
+[15:40:09] Starting 'fonts'...
+[15:40:09] Starting 'scripts'...
+[15:40:09] Finished 'scripts' after 32 ms
+[15:40:09] Finished 'html' after 37 ms
+[15:40:09] Finished 'fonts' after 46 ms
+[15:40:10] Finished 'sass' after 778 ms
+7.6 MB bytes written (7.81 seconds)
+[15:40:20] Finished 'watch' after 11 s
+```
+
+This will ensure that as you make changes to your source code the application is built.
+
+### Step 15A: Test Application in Android Simulator
+
+### Step 15B: Test Application in iOS Simulator
+
+### Step 15: Create an Adapter
+
+### Step 16: Publish the Adapter
+
 
 
 
